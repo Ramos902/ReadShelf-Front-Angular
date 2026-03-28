@@ -1,0 +1,72 @@
+.main-header {
+  width: 100%; height: 60px;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  width: 70%;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.navbar-text {
+  color: var(--muted-foreground);
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background-color: var(--destructive);
+  color: white;
+}
+
+.btn-danger:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,65 @@
+<main class="flex h-full items-center justify-center px-4 font-sans">
+
+  <div class="w-full max-w-[400px] rounded-lg border border-border bg-card p-10 text-card-foreground shadow-md">
+    <h1 class="mb-2 text-center text-3xl">Crie sua Conta</h1>
+    <p class="mb-8 text-center text-base">Comece a organizar seus PDFs agora mesmo</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-col gap-4">
+
+      <!-- Campo de Nome -->
+      <div class="flex flex-col">
+        <label for="name" class="mb-2 text-sm font-semibold">Name</label>
+        <input id="name" type="name" formControlName="name" placeholder="Seu nome Completo"
+          class="w-full rounded-md border px-4 py-3 transition-all focus:outline-none focus:ring-2"
+          [class.invalid]="isFieldInvalid('name')">
+        @if (isFieldInvalid('name')) {
+        <small class="error-message">{{ getErrorMessage('name') }}</small>
+        }
+      </div>
+
+      <!-- Campo de E-mail -->
+      <div class="flex flex-col">
+        <label for="email" class="mb-2 text-sm font-semibold">E-mail</label>
+        <input id="email" type="email" formControlName="email" placeholder="seu.email@exemplo.com"
+          class="w-full rounded-md border px-4 py-3 transition-all focus:outline-none focus:ring-2"
+          [class.input-error]="isFieldInvalid('email')">
+        @if (isFieldInvalid('email')) {
+        <small class="mt-1 text-sm">{{ getErrorMessage('email') }}</small>
+        }
+      </div>
+
+      <!-- Campo de Senha -->
+      <div class="flex flex-col">
+        <label for="password" class="mb-2 text-sm font-semibold">Senha</label>
+        <input id="password" type="password" formControlName="password" placeholder="••••••••"
+          class="w-full rounded-md border px-4 py-3 transition-all focus:outline-none focus:ring-2"
+          [class.input-error]="isFieldInvalid('password')">
+        @if (isFieldInvalid('password')) {
+        <small class="mt-1 text-sm">{{ getErrorMessage('password') }}</small>
+        }
+      </div>
+
+      <!-- Mensagem de Erro da API -->
+      @if (apiError) {
+      <div class="mt-2 rounded-md p-3 text-center text-sm">
+        {{ apiError }}
+      </div>
+      }
+
+      <!-- Botão de Enviar -->
+      <button type="submit" [disabled]="registerForm.invalid"
+        class="mt-4 w-full cursor-pointer rounded-md bg-primary p-3.5 text-base font-semibold text-primary-foreground transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-60">
+        Criar Conta
+      </button>
+    </form>
+
+    <div class="mt-6 text-center text-sm">
+      <p>Já tem uma conta?
+        <a routerLink="/auth/login" class="cursor-pointer font-semibold text-primary hover:underline">
+          Faça Log-in
+        </a>
+      </p>
+    </div>
+
+  </div>
+</main>

@@ -1,0 +1,29 @@
+<header class="main-header">
+  <nav class="navbar">
+    <a routerLink="/" class="text-xl font-semibold tracking-tight text-foreground hover:opacity-80">
+      ReadShelf
+    </a>
+    <div class="flex items-center gap-4">
+      <ng-container *ngIf="!isAuthenticated()">
+        <a routerLink="/auth/login" class="inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-primary text-primary-foreground hover:opacity-90">
+          Login
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isAuthenticated()">
+        <span class="text-sm text-muted-foreground">
+          Olá, <strong>{{ currentUser()?.name }}</strong>
+        </span>
+        <a routerLink="/shelf" class="inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium hover:bg-muted">
+          Minha Estante
+        </a>
+        <button type="button" class="inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium bg-destructive text-white hover:opacity-90" (click)="logout()">
+          Sair
+        </button>
+      </ng-container>
+      <button (click)="themeService.toggleTheme()" class="p-3 rounded-lg border">
+        {{ themeService.isDark() ? '☀️' : '🌙' }}
+      </button>
+    </div>
+  </nav>
+</header>
